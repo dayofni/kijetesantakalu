@@ -21,6 +21,9 @@ class ilo(discord.Client):
 
     async def on_message(self, message: Message):
         
+        if message.author == self.user:
+            return
+        
         print(f'Message from {message.author}: {message.content}')
         
         for func in ON_MESSAGE:
@@ -29,6 +32,9 @@ class ilo(discord.Client):
     async def on_raw_reaction_add(self, payload: RawReactionActionEvent):
         
         user, reaction = payload.member, payload.emoji
+        
+        if message.author == self.user:
+            return
         
         message = self.get_message(payload.message_id)
         
