@@ -10,9 +10,8 @@ ON_MESSAGE = [mu_a]
 ON_REACT   = [awen_a]
 
 CONFIG = {
-    
     "REACT_IGNORE_DAYS":   7,
-    "STOP_MESSAGE_AMOUNT": 5
+    "STOP_MESSAGE_AMOUNT": 2
 }
 
 class ilo(discord.Client):
@@ -36,6 +35,8 @@ class ilo(discord.Client):
         if not message:
             print("Couldn't find attached message.")
             return
+        
+        print(f"Reaction from {user} on message {payload.message_id}: {reaction.name}")
         
         for func in ON_REACT:
             await func(self, user, reaction, message, config=CONFIG)
