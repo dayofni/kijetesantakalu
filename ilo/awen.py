@@ -10,6 +10,8 @@ async def awen_a(client: Client, user: Member, reaction: PartialEmoji, message: 
     m_id = message.id
     user = user.id
     
+    print(config)
+    
     if reaction.name != "🛑":
         return
     
